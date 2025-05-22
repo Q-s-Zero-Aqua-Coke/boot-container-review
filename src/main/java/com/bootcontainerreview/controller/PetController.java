@@ -1,6 +1,7 @@
 package com.bootcontainerreview.controller;
 
 import com.bootcontainerreview.entity.Pet;
+import com.bootcontainerreview.entity.PetDTO;
 import com.bootcontainerreview.repository.PetRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class PetController {
     }
 
     @PostMapping
-    public ResponseEntity<Pet> savePet(@RequestBody Pet pet) {
-        return ResponseEntity.status(201).body(petRepository.save(pet));
+    public ResponseEntity<Pet> savePet(@RequestBody PetDTO petDTO) {
+        return ResponseEntity.status(201).body(petRepository.save(petDTO.toEntity()));
     }
 }
